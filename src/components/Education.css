@@ -1,0 +1,26 @@
+.education-section {
+  margin: 100px 0;
+  overflow: hidden;
+}
+
+.timeline-wrapper {
+  position: relative;
+  width: 100%;
+  height: 400px; /* Adjust height as necessary */
+  overflow: hidden; /* Ensure no overflow during horizontal scrolling */
+}
+
+.timeline-container {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+
+.timeline-item {
+  background-color: #7a7777;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-right: 20px;
+  flex: 0 0 80%; /* Adjust width to fit your design */
+}
