@@ -1,10 +1,12 @@
 import React from "react";
 import { Tilt } from "react-tilt";
+import { TbBinaryTree } from "react-icons/tb";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
+import { GiMaterialsScience } from "react-icons/gi";
 
 function WorkExperience() {
   const projects = [
@@ -33,7 +35,12 @@ function WorkExperience() {
             background: "linear-gradient(#050816, #B7B8BC)",
             color: "#fff",
           }}
-          // icon={<WorkIcon />}
+          icon={
+            <img
+              src="/upfsm.jpg"
+              className="rounded-full object-cover h-16"
+            ></img>
+          }
         >
           <h3 className="vertical-timeline-element-title">IT Support</h3>
           <h4 className="vertical-timeline-element-subtitle">
@@ -72,7 +79,12 @@ function WorkExperience() {
             background: "linear-gradient(#050816, #12314A)",
             color: "#fff",
           }}
-          // icon={<WorkIcon />}
+          icon={
+            <img
+              src="/upfsm.jpg"
+              className="rounded-full object-cover h-16"
+            ></img>
+          }
         >
           <h3 className="vertical-timeline-element-title">
             Freelance Desktop Application
@@ -106,7 +118,12 @@ function WorkExperience() {
             color: "#fff",
           }}
           iconStyle={{ background: "linear-gradient(#050816, #B7B8BC)" }}
-          // icon={<WorkIcon />}
+          icon={
+            <img
+              src="/upfsm.jpg"
+              className="rounded-full object-cover h-16"
+            ></img>
+          }
         >
           <h3 className="vertical-timeline-element-title">
             Freelance Web Application
@@ -164,7 +181,7 @@ function WorkExperience() {
             background: "linear-gradient(#050816, #12314A)",
             color: "#fff",
           }}
-          // icon={<WorkIcon />}
+          icon={<TbBinaryTree />}
         >
           <h3 className="vertical-timeline-element-title">
             Freelance Developer

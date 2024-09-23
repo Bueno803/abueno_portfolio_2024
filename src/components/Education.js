@@ -53,18 +53,18 @@ const Card = ({ card }) => {
         <h2 className="text-3xl font-bold uppercase mb-4 text-neutral-800">
           {card.title}
         </h2>
-        <p className="mb-6 text-neutral-600">
-          This is a brief description of the project. It can provide an overview
-          or key details about what the project does.
-        </p>
-        <a
-          href={card.repoLink}
-          className="self-start py-2 px-4 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          View Repo
-        </a>
+        <p className="mb-6 text-neutral-600">{card.content}</p>
+        {/* Conditionally render the 'View Repo' button */}
+        {card.id !== 4 && (
+          <a
+            href={card.repoLink}
+            className="self-start py-2 px-4 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 transition"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Repo
+          </a>
+        )}
       </div>
 
       {/* Right side: Image */}
@@ -86,36 +86,48 @@ const cards = [
   {
     url: "/imgs/galleryshooter.png",
     title: "Shooting Gallery",
+    content:
+      "A Lua shooting gallery that utilizes fundamental programming techniques such as conditional statements, loops, functions and also implemented a custom high score leaderboard feature.",
     repoLink: "https://github.com/your-repo/shooting-gallery",
     id: 1,
   },
   {
     url: "/imgs/makelist.png",
-    title: "Title 2",
+    title: "Makelist",
+    content:
+      "A group web app that allows users to create accounts customize their grocery list based on dietary preferences.",
     repoLink: "https://github.com/your-repo/project-2",
     id: 2,
   },
   {
     url: "/imgs/mobileEmulator.png",
-    title: "Title 3",
+    title: "Mobile applications",
+    content:
+      "Developed mobile applications, including user interface design, local and cloud data storage techniques, application archetecture and utilized native device features.",
     repoLink: "https://github.com/your-repo/project-3",
     id: 3,
   },
   {
     url: "/imgs/NFA.png",
-    title: "Title 4",
+    title: "No Epsilon Transition NFA",
+    content:
+      "Utilized basic theoretical principles of computing as modeled by formal languages, grammar, automata, and turing machines to create a no Epsilon transition NFA program. (DEMO UPON REQUEST)",
     repoLink: "https://github.com/your-repo/project-4",
     id: 4,
   },
   {
     url: "/imgs/platformer.png",
-    title: "Title 5",
+    title: "Platformer",
+    content:
+      "A Lua Platformer where I implemented challenging obstacles and enemies with a goal at the end, while also uitilizing collision detection and a physics engine to offer responsive realistic interactions.",
     repoLink: "https://github.com/your-repo/project-5",
     id: 5,
   },
   {
     url: "/imgs/UPFapp.png",
-    title: "Title 6",
+    title: "Desktop Application",
+    content:
+      "An app that organizes client information, and a schedule feature that keeps track of client's progression through a system for martial arts belt testing purposes.",
     repoLink: "https://github.com/your-repo/project-6",
     id: 6,
   },
