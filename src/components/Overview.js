@@ -6,7 +6,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { FiArrowRight, FiMail, FiMapPin } from "react-icons/fi";
+import { FiMail, FiMapPin } from "react-icons/fi";
 import {
   SiGithub,
   SiGmail,
@@ -14,7 +14,6 @@ import {
   SiLinkedin,
   SiMinutemailer,
 } from "react-icons/si";
-import { FiAlertCircle } from "react-icons/fi";
 import {
   FaFileDownload,
   FaLaptop,
@@ -26,8 +25,12 @@ import {
   FaLinode,
 } from "react-icons/fa";
 import { Md4gPlusMobiledata } from "react-icons/md";
-// import { FiArrowRight, FiMail, FiMapPin } from "react-icons/fi";
-// import { SiGithub, SiTiktok, SiTwitter, SiYoutube } from "react-icons/si";
+import emailjs from "emailjs-com"; // Import emailjs
+
+// EmailJS initialization
+const SERVICE_ID = "service_9v61gpl";
+const TEMPLATE_ID = "template_nstq0ql";
+const USER_ID = "TB8B0wKlKLnanOpkz";
 
 const SwipeCards = () => {
   const [cards, setCards] = useState(cardData);
@@ -51,15 +54,7 @@ const SwipeCards = () => {
             <LocationBlock />
             <EmailListBlock />
           </motion.div>
-          {/* <Footer /> */}
         </div>
-        {/* <h1 className="bg-gradient-to-r from-violet-400 via-rose-600 to-amber-300 inline-block text-transparent bg-clip-text text-4xl font-bold">
-          Hi, I'm [Your Name]
-        </h1>
-        <p></p>
-        <p className="bg-gradient-to-r from-amber-400 via-rose-600 to-violet-300 inline-block text-transparent bg-clip-text mt-4 text-lg">
-          I’m a software engineer with experience in [Your Experience]...
-        </p> */}
       </div>
 
       <div className="relative h-[500px] w-[400px] flex items-center">
@@ -161,13 +156,6 @@ const HeaderBlock = () => (
       Hi, I'm Abdullah.{" "}
       <span className="text-zinc-400">I am a fullstack software engineer!</span>
     </h1>
-    {/* <a
-      class="flex group text-pink-500 transition-all duration-300 ease-in-out"
-      href="#"
-    >
-      <span class="bg-left-bottom bg-gradient-to-r from-pink-500 to-purple-800 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-        Contact me
-      </span> */}
     <a
       href="AbdullahBueno_resume_onepage.pdf"
       download="AbdullahBueno_Resume.pdf"
@@ -179,8 +167,6 @@ const HeaderBlock = () => (
         <FaFileDownload /> Download Resume
       </button>
     </a>
-    {/* <FiArrowRight className="relative top-1.5 left-1" /> */}
-    {/* </a> */}
   </Block>
 );
 
@@ -297,8 +283,6 @@ const AboutBlock = () => (
           <span>Ionic/Kotlin</span>
         </li>
       </ul>
-      {/* </div> */}
-      {/* <div className="absolute flex items-end "> */}
       <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
         <li class="flex items-center space-x-3 rtl:space-x-reverse">
           <FaRegCheckSquare style={{ color: "#34D399", fontSize: "1.2rem" }} />
@@ -314,14 +298,6 @@ const AboutBlock = () => (
         </li>
       </ul>
     </div>
-
-    {/* My passion is building cool stuff.{" "}
-      <span className="text-zinc-400">
-        I build primarily with React, Tailwind CSS, and Framer Motion. I love
-        this stack so much that I even built a website about it. I've made over
-        a hundred videos on the subject across YouTube and TikTok.
-      </span> */}
-    {/* </p> */}
   </Block>
 );
 
@@ -334,63 +310,104 @@ const LocationBlock = () => (
   </Block>
 );
 
-const EmailListBlock = () => (
-  <Block className="col-span-12 md:col-span-9">
-    <p className="mb-3 text-lg">Send me a message!</p>
-    <form onSubmit={(e) => e.preventDefault()} className="flex flex-col gap-4">
-      {/* Name and Email inputs on the same line */}
-      <div className="flex gap-2">
-        <div className="flex flex-col w-1/2">
-          <label className="mb-1 text-sm" htmlFor="name">
-            Name
+const EmailListBlock = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, USER_ID).then(
+      (response) => {
+        console.log("Email sent successfully!", response.status, response.text);
+        alert("Your message has been sent!");
+        setFormData({ name: "", email: "", message: "" }); // Reset form fields
+      },
+      (error) => {
+        console.error("Failed to send email:", error);
+        alert("Failed to send your message. Please try again.");
+      }
+    );
+  };
+  return (
+    <Block className="col-span-12 md:col-span-9">
+      <p className="mb-3 text-lg">Send me a message!</p>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <div className="flex gap-2">
+          <div className="flex flex-col w-1/2">
+            <label className="mb-1 text-sm" htmlFor="name">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+              className="w-full rounded border border-zinc-700 bg-zinc-800 px-3 py-1.5 transition-colors focus:border-red-300 focus:outline-0"
+              required
+            />
+          </div>
+          <div className="flex flex-col w-1/2">
+            <label className="mb-1 text-sm" htmlFor="email">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Your Email"
+              className="w-full rounded border border-zinc-700 bg-zinc-800 px-3 py-1.5 transition-colors focus:border-red-300 focus:outline-0"
+              required
+            />
+          </div>
+        </div>
+
+        {/* Message input field */}
+        <div className="flex flex-col">
+          <label className="mb-1 text-sm" htmlFor="message">
+            Message
           </label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Your Name"
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Enter your message"
             className="w-full rounded border border-zinc-700 bg-zinc-800 px-3 py-1.5 transition-colors focus:border-red-300 focus:outline-0"
+            required
           />
         </div>
-        <div className="flex flex-col w-1/2">
-          <label className="mb-1 text-sm" htmlFor="email">
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Your Email"
-            className="w-full rounded border border-zinc-700 bg-zinc-800 px-3 py-1.5 transition-colors focus:border-red-300 focus:outline-0"
-          />
+
+        {/* Send Button */}
+        <div className="flex justify-start">
+          <button
+            type="submit"
+            className="flex items-center gap-2 whitespace-nowrap rounded bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-300"
+          >
+            <FiMail /> Send
+          </button>
         </div>
-      </div>
-
-      {/* Message input field */}
-      <div className="flex flex-col">
-        <label className="mb-1 text-sm" htmlFor="message">
-          Message
-        </label>
-        <textarea
-          id="message"
-          placeholder="Enter your message"
-          className="w-full rounded border border-zinc-700 bg-zinc-800 px-3 py-1.5 transition-colors focus:border-red-300 focus:outline-0"
-        />
-      </div>
-
-      {/* Send Button */}
-      <div className="flex justify-start">
-        <button
-          type="submit"
-          className="flex items-center gap-2 whitespace-nowrap rounded bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-300"
-        >
-          <FiMail /> Send
-        </button>
-      </div>
-    </form>
-  </Block>
-);
+      </form>
+    </Block>
+  );
+};
 
 const Logo = () => {
-  // Temp logo from https://logoipsum.com/
   return (
     <svg
       width="40"
@@ -457,7 +474,10 @@ const GmailModal = ({ isOpen, setIsOpen }) => {
               <div className="flex gap-2">
                 <button
                   onClick={() => {
-                    setNotifications((pv) => ["wefweff", ...pv]);
+                    setNotifications((pv) => [
+                      copyToClipboard("buenobusiness803@gmail.com"),
+                      ...pv,
+                    ]);
                   }}
                   className="bg-transparent hover:bg-white/10 transition-colors text-white font-semibold w-full py-2 rounded"
                 >
@@ -486,11 +506,6 @@ const GmailModal = ({ isOpen, setIsOpen }) => {
 };
 
 const LinkModal = ({ isOpen, setIsOpen }) => {
-  const [notifications, setNotifications] = useState([]);
-
-  const removeNotif = (id) => {
-    setNotifications((pv) => pv.filter((n) => n.id !== id));
-  };
   return (
     <AnimatePresence>
       {isOpen && (
@@ -518,7 +533,7 @@ const LinkModal = ({ isOpen, setIsOpen }) => {
               <div className="flex gap-2">
                 <button
                   onClick={() => {
-                    setNotifications((pv) => ["wefweff", ...pv]);
+                    openNewPage("https://www.linkedin.com/in/abueno803/");
                   }}
                   className="bg-transparent hover:bg-white/10 transition-colors text-white font-semibold w-full py-2 rounded"
                 >
@@ -535,22 +550,10 @@ const LinkModal = ({ isOpen, setIsOpen }) => {
           </motion.div>
         </motion.div>
       )}
-      <div className="flex flex-col gap-1 w-72 fixed top-2 right-2 z-50 pointer-events-none">
-        <AnimatePresence>
-          {notifications.map((n) => (
-            <Notification removeNotif={removeNotif} {...n} key={n.id} />
-          ))}
-        </AnimatePresence>
-      </div>
     </AnimatePresence>
   );
 };
 const GitModal = ({ isOpen, setIsOpen }) => {
-  const [notifications, setNotifications] = useState([]);
-
-  const removeNotif = (id) => {
-    setNotifications((pv) => pv.filter((n) => n.id !== id));
-  };
   return (
     <AnimatePresence>
       {isOpen && (
@@ -578,7 +581,7 @@ const GitModal = ({ isOpen, setIsOpen }) => {
               <div className="flex gap-2">
                 <button
                   onClick={() => {
-                    setNotifications((pv) => ["wefweff", ...pv]);
+                    openNewPage("https://github.com/Bueno803");
                   }}
                   className="bg-transparent hover:bg-white/10 transition-colors text-white font-semibold w-full py-2 rounded"
                 >
@@ -595,23 +598,11 @@ const GitModal = ({ isOpen, setIsOpen }) => {
           </motion.div>
         </motion.div>
       )}
-      <div className="flex flex-col gap-1 w-72 fixed top-2 right-2 z-50 pointer-events-none">
-        <AnimatePresence>
-          {notifications.map((n) => (
-            <Notification removeNotif={removeNotif} {...n} key={n.id} />
-          ))}
-        </AnimatePresence>
-      </div>
     </AnimatePresence>
   );
 };
 
 const FaceModal = ({ isOpen, setIsOpen }) => {
-  const [notifications, setNotifications] = useState([]);
-
-  const removeNotif = (id) => {
-    setNotifications((pv) => pv.filter((n) => n.id !== id));
-  };
   return (
     <AnimatePresence>
       {isOpen && (
@@ -639,7 +630,7 @@ const FaceModal = ({ isOpen, setIsOpen }) => {
               <div className="flex gap-2">
                 <button
                   onClick={() => {
-                    setNotifications((pv) => ["wefweff", ...pv]);
+                    openNewPage("https://www.facebook.com/abdullah.bueno");
                   }}
                   className="bg-transparent hover:bg-white/10 transition-colors text-white font-semibold w-full py-2 rounded"
                 >
@@ -656,13 +647,6 @@ const FaceModal = ({ isOpen, setIsOpen }) => {
           </motion.div>
         </motion.div>
       )}
-      <div className="flex flex-col gap-1 w-72 fixed top-2 right-2 z-50 pointer-events-none">
-        <AnimatePresence>
-          {notifications.map((n) => (
-            <Notification removeNotif={removeNotif} {...n} key={n.id} />
-          ))}
-        </AnimatePresence>
-      </div>
     </AnimatePresence>
   );
 };
@@ -681,35 +665,11 @@ const cardData = [
     id: 3,
     url: "/imgs/abueno_grad.jpg",
   },
-  // {
-  //   id: 3,
-  //   url: "https://images.unsplash.com/photo-1539185441755-769473a23570?q=80&w=2342&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  // },
-  // {
-  //   id: 4,
-  //   url: "https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2224&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  // },
-  // {
-  //   id: 5,
-  //   url: "https://images.unsplash.com/photo-1516478177764-9fe5bd7e9717?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  // },
-  // {
-  //   id: 6,
-  //   url: "https://images.unsplash.com/photo-1570464197285-9949814674a7?q=80&w=2273&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  // },
-  // {
-  //   id: 7,
-  //   url: "https://images.unsplash.com/photo-1578608712688-36b5be8823dc?q=80&w=2187&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  // },
-  // {
-  //   id: 8,
-  //   url: "https://images.unsplash.com/photo-1505784045224-1247b2b29cf3?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  // },
 ];
 
 const NOTIFICATION_TTL = 5000;
 
-const Notification = ({ text, id, removeNotif }) => {
+const Notification = ({ id, removeNotif }) => {
   useEffect(() => {
     const timeoutRef = setTimeout(() => {
       removeNotif(id);
@@ -728,7 +688,7 @@ const Notification = ({ text, id, removeNotif }) => {
       className="p-2 flex items-start rounded gap-2 text-xs font-medium shadow-lg text-white bg-indigo-500 pointer-events-auto"
     >
       {/* <FiCheckSquare className=" mt-0.5" /> */}
-      <span>{text}</span>
+      <span>copied to clipboard</span>
       <button onClick={() => removeNotif(id)} className="ml-auto mt-0.5">
         {/* <FiX /> */}
       </button>
@@ -737,16 +697,10 @@ const Notification = ({ text, id, removeNotif }) => {
 };
 
 function copyToClipboard(copiedText) {
-  // Get the text field
-  // var copyText = document.getElementById("myInput");
-
-  // // Select the text field
-  // copyText.select();
-  // copyText.setSelectionRange(0, 99999); // For mobile devices
-
-  // Copy the text inside the text field
   navigator.clipboard.writeText(copiedText);
+  return "buenobusiness803@gmail.com";
+}
 
-  // Alert the copied text
-  alert(copiedText + " copied to clipboard.");
+function openNewPage(url) {
+  window.open(url, "_blank").focus();
 }

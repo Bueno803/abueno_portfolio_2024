@@ -10,7 +10,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div class="bg-primary">
+    <div class="bg-primary w-full">
       <div class="bg-hero-pattern bg-cover bg-no-repeat bg-center">
         <Navbar />
         <section id="overview" className="pt-16">

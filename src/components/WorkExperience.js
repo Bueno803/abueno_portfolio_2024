@@ -52,17 +52,17 @@ function WorkExperience() {
           </p>
           <div class="mt-5 flex flex-wrap gap-2">
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 inline-block text-transparent bg-clip-text`}
             >
               #Hardware/Software management
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-red-600 via-red-500 to-red-600 inline-block text-transparent bg-clip-text`}
             >
               #Attention To Detail
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600 inline-block text-transparent bg-clip-text`}
             >
               #Comminication
             </p>
@@ -99,12 +99,12 @@ function WorkExperience() {
           </p>
           <div class="mt-5 flex flex-wrap gap-2">
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 inline-block text-transparent bg-clip-text`}
             >
               #CSharp
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 inline-block text-transparent bg-clip-text`}
             >
               #SQL
             </p>
@@ -139,32 +139,32 @@ function WorkExperience() {
           </p>
           <div class="mt-5 flex flex-wrap gap-2">
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-red-300 via-red-500 to-red-600 inline-block text-transparent bg-clip-text`}
             >
               #Typescript
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-orange-300 via-orange-500 to-orange-600 inline-block text-transparent bg-clip-text`}
             >
               #Firebase
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-purple-300 via-purple-500 to-purple-600 inline-block text-transparent bg-clip-text`}
             >
               #Ionic
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-blue-300 via-blue-500 to-blue-600 inline-block text-transparent bg-clip-text`}
             >
               #Angular
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-green-300 via-green-500 to-green-600 inline-block text-transparent bg-clip-text`}
             >
               #NestJS
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-600 inline-block text-transparent bg-clip-text`}
             >
               #Google Cloud
             </p>
@@ -195,17 +195,17 @@ function WorkExperience() {
           </p>
           <div class="mt-5 flex flex-wrap gap-2">
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 inline-block text-transparent bg-clip-text`}
             >
               #Typescript
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-red-600 via-red-700 to-red-800 inline-block text-transparent bg-clip-text`}
             >
               #Ionic
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-red-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              class={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 inline-block text-transparent bg-clip-text`}
             >
               #Capacitor
             </p>

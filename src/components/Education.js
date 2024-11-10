@@ -4,7 +4,7 @@ import { useRef } from "react";
 
 const Example = () => {
   return (
-    <div className="bg-primary">
+    <div className="bg-primary" style={{ width: "100%" }}>
       {/* <div className="flex h-48 items-center justify-center">
         <span className="font-semibold uppercase text-neutral-500">
           Scroll down
@@ -27,10 +27,13 @@ const HorizontalScrollCarousel = () => {
     target: targetRef,
   });
 
-  const x = useTransform(scrollYProgress, [0, 1], ["1%", "-95%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-primary">
+      <h2 className="text-white text-3xl font-bold mb-8" data-aos="fade-right">
+        Work Experience
+      </h2>
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-4">
           {cards.map((card) => {
@@ -88,7 +91,8 @@ const cards = [
     title: "Shooting Gallery",
     content:
       "A Lua shooting gallery that utilizes fundamental programming techniques such as conditional statements, loops, functions and also implemented a custom high score leaderboard feature.",
-    repoLink: "https://github.com/your-repo/shooting-gallery",
+    repoLink:
+      "https://github.com/Bueno803/lua-projects/tree/main/Shooting%20Gallary",
     id: 1,
   },
   {
@@ -120,7 +124,7 @@ const cards = [
     title: "Platformer",
     content:
       "A Lua Platformer where I implemented challenging obstacles and enemies with a goal at the end, while also uitilizing collision detection and a physics engine to offer responsive realistic interactions.",
-    repoLink: "https://github.com/your-repo/project-5",
+    repoLink: "https://github.com/Bueno803/lua-projects/tree/main/platformer",
     id: 5,
   },
   {
