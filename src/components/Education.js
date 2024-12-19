@@ -32,7 +32,7 @@ const HorizontalScrollCarousel = () => {
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-primary">
       <h2 className="text-white text-3xl font-bold mb-8" data-aos="fade-right">
-        Work Experience
+        Projects
       </h2>
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-4">
@@ -100,7 +100,7 @@ const cards = [
     title: "Makelist",
     content:
       "A group web app that allows users to create accounts customize their grocery list based on dietary preferences.",
-    repoLink: "https://github.com/your-repo/project-2",
+    repoLink: "https://github.com/Bueno803/USCWebApp",
     id: 2,
   },
   {
@@ -108,7 +108,7 @@ const cards = [
     title: "Mobile applications",
     content:
       "Developed mobile applications, including user interface design, local and cloud data storage techniques, application archetecture and utilized native device features.",
-    repoLink: "https://github.com/your-repo/project-3",
+    repoLink: "https://github.com/Bueno803/AndroidProjects",
     id: 3,
   },
   {
@@ -116,7 +116,7 @@ const cards = [
     title: "No Epsilon Transition NFA",
     content:
       "Utilized basic theoretical principles of computing as modeled by formal languages, grammar, automata, and turing machines to create a no Epsilon transition NFA program. (DEMO UPON REQUEST)",
-    repoLink: "https://github.com/your-repo/project-4",
+    repoLink: "https://www.youtube.com/watch?v=84oNUttWlN4",
     id: 4,
   },
   {
@@ -132,7 +132,7 @@ const cards = [
     title: "Desktop Application",
     content:
       "An app that organizes client information, and a schedule feature that keeps track of client's progression through a system for martial arts belt testing purposes.",
-    repoLink: "https://github.com/your-repo/project-6",
+    repoLink: "https://github.com/Bueno803/UPF_App",
     id: 6,
   },
 ];

@@ -248,51 +248,53 @@ const SocialsBlock = () => {
 
 const AboutBlock = () => (
   <Block className="col-span-12 text-2xl leading-snug">
-    {/* <p> */}
-
-    <div className="flex flow-row space-x-2">
-      <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
-        <li class="flex items-center space-x-3 rtl:space-x-reverse">
+    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-2">
+      <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400">
+        <li className="flex items-center space-x-3 rtl:space-x-reverse">
           <FaLaptop style={{ color: "orange", fontSize: "1.2rem" }} />
-
           <span>Frontend</span>
         </li>
-        <li class="flex items-center space-x-3 rtl:space-x-reverse">
+        <li className="flex items-center space-x-3 rtl:space-x-reverse">
           <FaDatabase style={{ color: "violet", fontSize: "1.2rem" }} />
           <span>Backend</span>
         </li>
-        <li class="flex items-center space-x-3 rtl:space-x-reverse">
+        <li className="flex items-center space-x-3 rtl:space-x-reverse">
           <FaMobileAlt style={{ color: "purple", fontSize: "1.2rem" }} />
           <span>Mobile Development</span>
         </li>
       </ul>
 
-      <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
-        <li class="flex items-center space-x-3 rtl:space-x-reverse">
+      <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400">
+        <li className="flex items-center space-x-3 rtl:space-x-reverse">
           <FaRegFileCode style={{ fontSize: "1.2rem" }} />
           <span>JS/TS/C++/C#</span>
         </li>
-        <li class="flex items-center space-x-3 rtl:space-x-reverse">
+        <li className="flex items-center space-x-3 rtl:space-x-reverse">
           <FaLinode style={{ color: "#3f64e2", fontSize: "1.2rem" }} />
-          <span>Node/Nest/ExpressJS/Flask</span>
+          <span>
+            Node/Nest
+            <br />
+            ExpressJS/Flask
+          </span>
         </li>
-        <li class="flex items-center space-x-3 rtl:space-x-reverse">
+        <li className="flex items-center space-x-3 rtl:space-x-reverse">
           <Md4gPlusMobiledata
             style={{ color: "#f0f01a", fontSize: "1.2rem" }}
           />
           <span>Ionic/Kotlin</span>
         </li>
       </ul>
-      <ul class="space-y-4 text-left text-gray-500 dark:text-gray-400">
-        <li class="flex items-center space-x-3 rtl:space-x-reverse">
+
+      <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400">
+        <li className="flex items-center space-x-3 rtl:space-x-reverse">
           <FaRegCheckSquare style={{ color: "#34D399", fontSize: "1.2rem" }} />
           <span>Problem Solving</span>
         </li>
-        <li class="flex items-center space-x-3 rtl:space-x-reverse">
+        <li className="flex items-center space-x-3 rtl:space-x-reverse">
           <FaRegCheckSquare style={{ color: "#34D399", fontSize: "1.2rem" }} />
           <span>Creative Thinking</span>
         </li>
-        <li class="flex items-center space-x-3 rtl:space-x-reverse">
+        <li className="flex items-center space-x-3 rtl:space-x-reverse">
           <FaRegCheckSquare style={{ color: "#34D399", fontSize: "1.2rem" }} />
           <span>Communication</span>
         </li>

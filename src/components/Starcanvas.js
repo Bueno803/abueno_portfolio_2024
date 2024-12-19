@@ -8,7 +8,7 @@ const StarCanvas = () => {
     const ctx = canvas.getContext("2d");
 
     // Set canvas size to the window size
-    canvas.width = window.innerWidth * 0.8;
+    canvas.width = window.innerWidth;
     canvas.height = window.innerHeight * 5.8;
 
     // Function to create a star object with velocity

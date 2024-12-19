@@ -10,7 +10,7 @@ import "./App.css";
 
 function App() {
   return (
-    <div class="bg-primary w-full">
+    <div class="bg-primary w-screen max-w-full">
       <div class="bg-hero-pattern bg-cover bg-no-repeat bg-center">
         <Navbar />
         <section id="overview" className="pt-16">
@@ -21,8 +21,8 @@ function App() {
         <WorkExperience />
       </section>
       <section id="education" className="pt-16">
-        <Education />
         <StarCanvas />
+        <Education />
       </section>
       <section id="projects" className="pt-16">
         <Projects />
