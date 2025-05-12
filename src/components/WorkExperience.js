@@ -64,7 +64,7 @@ function WorkExperience() {
             <p
               class={`text-[14px] bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600 inline-block text-transparent bg-clip-text`}
             >
-              #Comminication
+              #Communication
             </p>
           </div>
         </VerticalTimelineElement>
