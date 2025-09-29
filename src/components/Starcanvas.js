@@ -9,7 +9,7 @@ const StarCanvas = () => {
 
     // Set canvas size to the window size
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight * 5.8;
+    canvas.height = window.innerHeight * 3.8;
 
     // Function to create a star object with velocity
     const createStar = () => ({
@@ -70,7 +70,7 @@ const StarCanvas = () => {
     <canvas
       ref={canvasRef}
       style={{ position: "absolute", top: 1600, left: 0 }}
-      width={1135}
+      // width={1135}
     />
   );
 };
