@@ -1,36 +1,17 @@
-import logo from "./logo.svg";
-import Navbar from "./components/NavBar";
-import SwipeCards from "./components/Overview";
-import WorkExperience from "./components/WorkExperience";
-import Education from "./components/Education";
-import Projects from "./components/Project";
-import Footer from "./components/Footer";
-import StarCanvas from "./components/Starcanvas";
+import UnderConstruction from "./components/UnderConstruction";
 import "./App.css";
 
-function App() {
-  return (
-    <div class="bg-primary w-screen max-w-full">
-      <div class="bg-hero-pattern bg-cover bg-no-repeat bg-center">
-        <Navbar />
-        <section id="overview" className="pt-16">
-          <SwipeCards />
-        </section>
-      </div>
-      <section id="work" className="pt-16">
-        <WorkExperience />
-      </section>
-      <section id="education" className="pt-16">
-        <StarCanvas />
-        <Education />
-      </section>
-      <section id="projects" className="pt-16">
-        <Projects />
-      </section>
+// TODO: Restore full site after updates are complete
+// import Navbar from "./components/NavBar";
+// import SwipeCards from "./components/Overview";
+// import WorkExperience from "./components/WorkExperience";
+// import Education from "./components/Education";
+// import Projects from "./components/Project";
+// import Footer from "./components/Footer";
+// import StarCanvas from "./components/Starcanvas";
 
-      <Footer />
-    </div>
-  );
+function App() {
+  return <UnderConstruction />;
 }
 
 export default App;
