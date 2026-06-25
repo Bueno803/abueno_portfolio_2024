@@ -125,12 +125,17 @@ function WorkExperience() {
             icon={
               exp.icon === "upf" ? (
                 <img
-                  src="/upfsm.jpg"
+                  src="/imgs/upf-cropped-pfp.png"
+                  alt={exp.company}
+                  className="rounded-full object-cover h-[70px]"
+                />
+              ) : (
+                <img
+                  src="/imgs/bhg-cropped-pfp.png"
                   alt={exp.company}
                   className="rounded-full object-cover h-16"
                 />
-              ) : (
-                <TbBinaryTree />
+                // <TbBinaryTree />
               )
             }
           >

@@ -16,7 +16,7 @@ const projects = [
   },
   {
     id: 2,
-    url: "/imgs/galleryshooter.png",
+    url: "/imgs/goodnewsy.png",
     title: "Web-Based Trivia Game",
     summary: "Interactive trivia platform with admin CMS and daily content",
     content:
@@ -26,7 +26,7 @@ const projects = [
   },
   {
     id: 3,
-    url: "/imgs/mobileEmulator.png",
+    url: "/imgs/OFFICIAL_PAFF_LOGO_WHT.png",
     title: "PAFF Mobile Application",
     summary: "Mobile app for the Pan African Film & Arts Festival",
     content:
@@ -54,16 +54,16 @@ const projects = [
     tags: ["Lua", "LÖVE2D", "Physics Engine"],
     repoLink: "https://github.com/Bueno803/lua-projects/tree/main/platformer",
   },
-  {
-    id: 6,
-    url: "/imgs/NFA.png",
-    title: "No Epsilon Transition NFA",
-    summary: "Automata theory implementation in C++",
-    content:
-      "Utilized basic theoretical principles of computing as modeled by formal languages, grammar, automata, and Turing machines to create a no-epsilon-transition NFA program.",
-    tags: ["C++", "Automata Theory", "Algorithms"],
-    repoLink: "https://www.youtube.com/watch?v=84oNUttWlN4",
-  },
+  // {
+  //   id: 6,
+  //   url: "/imgs/NFA.png",
+  //   title: "No Epsilon Transition NFA",
+  //   summary: "Automata theory implementation in C++",
+  //   content:
+  //     "Utilized basic theoretical principles of computing as modeled by formal languages, grammar, automata, and Turing machines to create a no-epsilon-transition NFA program.",
+  //   tags: ["C++", "Automata Theory", "Algorithms"],
+  //   repoLink: "https://www.youtube.com/watch?v=84oNUttWlN4",
+  // },
 ];
 
 const Projects = () => {
