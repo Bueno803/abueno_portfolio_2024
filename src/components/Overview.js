@@ -16,15 +16,8 @@ import {
 } from "react-icons/si";
 import {
   FaFileDownload,
-  FaLaptop,
   FaStaylinked,
-  FaDatabase,
-  FaMobileAlt,
-  FaRegCheckSquare,
-  FaRegFileCode,
-  FaLinode,
 } from "react-icons/fa";
-import { Md4gPlusMobiledata } from "react-icons/md";
 import emailjs from "emailjs-com";
 
 // EmailJS initialization
@@ -64,7 +57,7 @@ const Overview = () => {
         </div>
       </div>
 
-      <div className="relative h-[500px] w-[400px] flex items-center shrink-0 hidden lg:flex">
+      <div className="relative h-[500px] w-[400px] items-center shrink-0 hidden lg:flex">
         {cards.map((card) => (
           <Card key={card.id} cards={cards} setCards={setCards} {...card} />
         ))}
@@ -175,7 +168,7 @@ const TypingAnimation = () => {
 
   return (
     <span className="text-zinc-400">
-      I'm a {displayText}
+      I'm a <br/>{displayText}
       <span className="inline-block w-[2px] h-[1em] bg-zinc-400 ml-1 animate-pulse" />
     </span>
   );
@@ -376,59 +369,74 @@ const SocialsBlock = () => {
 };
 
 // --- About Block ---
+// --- Skills Data ---
+const skillCategories = [
+  {
+    title: "Languages",
+    color: "from-blue-400 to-cyan-400",
+    skills: ["JavaScript", "TypeScript", "Python", "C++", "C#", "Java", "PHP", "SQL", "R", "Kotlin"],
+  },
+  {
+    title: "Frameworks",
+    color: "from-purple-400 to-pink-400",
+    skills: ["React", "Angular", "Next.js", "NestJS", "Node.js", "Express", "Ionic", "Tailwind CSS"],
+  },
+  {
+    title: "Tools & Platforms",
+    color: "from-orange-400 to-yellow-400",
+    skills: ["Google Cloud", "AWS", "Cloudflare", "Nginx", "Firebase", "Git", "WordPress", "Power BI"],
+  },
+  {
+    title: "Soft Skills",
+    color: "from-green-400 to-emerald-400",
+    skills: ["Problem Solving", "Communication", "Creative Thinking", "Adaptability", "Attention to Detail", "Time Management"],
+  },
+];
+
+// --- About Block (Floating Tag Cloud) ---
 const AboutBlock = () => (
-  <Block className="col-span-12 text-2xl leading-snug">
-    <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-2">
-      <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400">
-        <li className="flex items-center space-x-3 rtl:space-x-reverse">
-          <FaLaptop style={{ color: "orange", fontSize: "1.2rem" }} />
-          <span>Frontend</span>
-        </li>
-        <li className="flex items-center space-x-3 rtl:space-x-reverse">
-          <FaDatabase style={{ color: "violet", fontSize: "1.2rem" }} />
-          <span>Backend</span>
-        </li>
-        <li className="flex items-center space-x-3 rtl:space-x-reverse">
-          <FaMobileAlt style={{ color: "purple", fontSize: "1.2rem" }} />
-          <span>Mobile Development</span>
-        </li>
-      </ul>
-
-      <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400">
-        <li className="flex items-center space-x-3 rtl:space-x-reverse">
-          <FaRegFileCode style={{ fontSize: "1.2rem" }} />
-          <span>JS/TS/C++/C#</span>
-        </li>
-        <li className="flex items-center space-x-3 rtl:space-x-reverse">
-          <FaLinode style={{ color: "#3f64e2", fontSize: "1.2rem" }} />
-          <span>
-            Node/Nest
-            <br />
-            ExpressJS/Flask
-          </span>
-        </li>
-        <li className="flex items-center space-x-3 rtl:space-x-reverse">
-          <Md4gPlusMobiledata
-            style={{ color: "#f0f01a", fontSize: "1.2rem" }}
-          />
-          <span>Ionic/Kotlin</span>
-        </li>
-      </ul>
-
-      <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400">
-        <li className="flex items-center space-x-3 rtl:space-x-reverse">
-          <FaRegCheckSquare style={{ color: "#34D399", fontSize: "1.2rem" }} />
-          <span>Problem Solving</span>
-        </li>
-        <li className="flex items-center space-x-3 rtl:space-x-reverse">
-          <FaRegCheckSquare style={{ color: "#34D399", fontSize: "1.2rem" }} />
-          <span>Creative Thinking</span>
-        </li>
-        <li className="flex items-center space-x-3 rtl:space-x-reverse">
-          <FaRegCheckSquare style={{ color: "#34D399", fontSize: "1.2rem" }} />
-          <span>Communication</span>
-        </li>
-      </ul>
+  <Block className="col-span-12 overflow-hidden">
+    <div className="space-y-6">
+      {skillCategories.map((category, catIndex) => (
+        <div key={catIndex}>
+          <h3 className={`text-sm font-semibold uppercase tracking-wider mb-3 bg-gradient-to-r ${category.color} text-transparent bg-clip-text`}>
+            {category.title}
+          </h3>
+          <div className="flex flex-wrap gap-2">
+            {category.skills.map((skill, skillIndex) => (
+              <motion.span
+                key={skillIndex}
+                className="px-3 py-1.5 text-sm rounded-full border border-zinc-600 bg-zinc-700/50 text-zinc-200 cursor-default"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.4,
+                  delay: catIndex * 0.1 + skillIndex * 0.03,
+                }}
+                viewport={{ once: true }}
+                whileHover={{
+                  scale: 1.1,
+                  backgroundColor: "rgba(99, 102, 241, 0.3)",
+                  borderColor: "rgba(99, 102, 241, 0.6)",
+                }}
+                animate={{
+                  y: [0, -4, 0],
+                }}
+                // Gentle floating animation with staggered timing
+                style={{
+                  animationName: "float",
+                  animationDuration: `${3 + (skillIndex % 3)}s`,
+                  animationDelay: `${skillIndex * 0.2}s`,
+                  animationIterationCount: "infinite",
+                  animationTimingFunction: "ease-in-out",
+                }}
+              >
+                {skill}
+              </motion.span>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   </Block>
 );
