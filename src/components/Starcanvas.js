@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 const StarCanvas = () => {
   const canvasRef = useRef(null);
@@ -47,6 +47,8 @@ const StarCanvas = () => {
         star.y = 0;
       }
     };
+    
+    let frameId;
 
     // Function to animate the stars
     const animateStars = () => {
@@ -55,14 +57,14 @@ const StarCanvas = () => {
         updateStarPosition(star);
         drawStar(star);
       });
-      requestAnimationFrame(animateStars); // Keep animating the stars
+      frameId = requestAnimationFrame(animateStars); // Keep animating the stars
     };
 
     animateStars();
 
     // Clean up when the component is unmounted
     return () => {
-      cancelAnimationFrame(animateStars);
+      cancelAnimationFrame(frameId);
     };
   }, []);
 

@@ -1,12 +1,10 @@
-import React from "react";
-import { Tilt } from "react-tilt";
 import { TbBinaryTree } from "react-icons/tb";
+import { motion } from "framer-motion"
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
-import { GiMaterialsScience } from "react-icons/gi";
 
 function WorkExperience() {
   const projects = [
@@ -19,9 +17,18 @@ function WorkExperience() {
 
   return (
     <div className="container mx-auto my-20 p-4">
-      <h2 className=" text-white text-3xl font-bold mb-8" data-aos="fade-right">
+      {/* <h2 className=" text-white text-3xl font-bold mb-8" data-aos="fade-right">
         Work Experience
-      </h2>
+      </h2> */}
+      <motion.h2
+        className="text-white text-3xl font-bold mb-8"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        Work Experience
+      </motion.h2>
       <VerticalTimeline>
         <VerticalTimelineElement
           className="vertical-timeline-element--work"
@@ -50,19 +57,19 @@ function WorkExperience() {
             Managed the smooth operation of a diverse range of devices,
             including laptops, tablets, projectors, and audio equipment
           </p>
-          <div class="mt-5 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap gap-2">
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 inline-block text-transparent bg-clip-text`}
             >
               #Hardware/Software management
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-red-600 via-red-500 to-red-600 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-red-600 via-red-500 to-red-600 inline-block text-transparent bg-clip-text`}
             >
               #Attention To Detail
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600 inline-block text-transparent bg-clip-text`}
             >
               #Communication
             </p>
@@ -97,14 +104,14 @@ function WorkExperience() {
             schedule feature that keeps track of client’s progression through a
             system for martial arts belt testing purposes
           </p>
-          <div class="mt-5 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap gap-2">
             <p
-              class={`text-[14px] bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 inline-block text-transparent bg-clip-text`}
             >
               #CSharp
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 inline-block text-transparent bg-clip-text`}
             >
               #SQL
             </p>
@@ -137,34 +144,34 @@ function WorkExperience() {
             test purposes. Also implemented a tracking system to determine belt
             test readiness and autamated invitations.
           </p>
-          <div class="mt-5 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap gap-2">
             <p
-              class={`text-[14px] bg-gradient-to-r from-red-300 via-red-500 to-red-600 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-red-300 via-red-500 to-red-600 inline-block text-transparent bg-clip-text`}
             >
               #Typescript
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-orange-300 via-orange-500 to-orange-600 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-orange-300 via-orange-500 to-orange-600 inline-block text-transparent bg-clip-text`}
             >
               #Firebase
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-purple-300 via-purple-500 to-purple-600 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-purple-300 via-purple-500 to-purple-600 inline-block text-transparent bg-clip-text`}
             >
               #Ionic
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-300 via-blue-500 to-blue-600 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-blue-300 via-blue-500 to-blue-600 inline-block text-transparent bg-clip-text`}
             >
               #Angular
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-green-300 via-green-500 to-green-600 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-green-300 via-green-500 to-green-600 inline-block text-transparent bg-clip-text`}
             >
               #NestJS
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-600 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-600 inline-block text-transparent bg-clip-text`}
             >
               #Google Cloud
             </p>
@@ -193,19 +200,19 @@ function WorkExperience() {
             Developed and integrated a new feature allowing users to favorite
             events within a mobile application
           </p>
-          <div class="mt-5 flex flex-wrap gap-2">
+          <div className="mt-5 flex flex-wrap gap-2">
             <p
-              class={`text-[14px] bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 inline-block text-transparent bg-clip-text`}
             >
               #Typescript
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-red-600 via-red-700 to-red-800 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-red-600 via-red-700 to-red-800 inline-block text-transparent bg-clip-text`}
             >
               #Ionic
             </p>
             <p
-              class={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 inline-block text-transparent bg-clip-text`}
+              className={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 inline-block text-transparent bg-clip-text`}
             >
               #Capacitor
             </p>

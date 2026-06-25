@@ -1,8 +1,8 @@
-import React from "react";
 import csissues from "../assets/images/csissues.png";
 import cpplogo from "../assets/images/CppLogo.png";
 import fullstack from "../assets/images/fullstack.png";
 import webdev from "../assets/images/webdev.png";
+import { motion } from "framer-motion";
 
 function Projects() {
   const projects = [
@@ -50,22 +50,40 @@ function Projects() {
 
   return (
     <div className="bg-white-100 container mx-auto my-20 p-4">
-      <h2 className="text-white text-3xl font-bold mb-8" data-aos="fade-right">
+      {/* <h2 className="text-white text-3xl font-bold mb-8" data-aos="fade-right">
         Relevant Course Work
-      </h2>
+      </h2> */}
+      <motion.h2
+        className="text-white text-3xl font-bold mb-8"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        Relevant Course Work
+      </motion.h2>
       <div className="grid md:grid-cols-2 gap-8">
         {projects.map((project, index) => (
-          <div
+          // <div
+          //   key={index}
+          //   className="bg-gray-200 p-6 rounded-lg shadow-lg relative"
+          //   data-aos="flip-up"
+          // >
+          <motion.div
             key={index}
             className="bg-gray-200 p-6 rounded-lg shadow-lg relative"
-            data-aos="flip-up"
+            initial={{ opacity: 0, rotateX: 90 }}
+            whileInView={{ opacity: 1, rotateX: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.1 }}
+            viewport={{ once: true }}
           >
+  
             {/* Icon positioned at the top right */}
             <img
               src={project.icon}
               alt={project.title}
               className="absolute top-4 right-4 w-8 h-8"
-            />
+              />
             <h3 className="text-xl font-bold">{project.title}</h3>
             <p className=" text-gray-600 text-[16px] font-semibold">
               {project.school}
@@ -76,7 +94,8 @@ function Projects() {
               <li className="mt-2">{project.point_3}</li>
             </ul>
             <p className="mt-2">{project.description}</p>
-          </div>
+              </motion.div>
+          // </div>
         ))}
       </div>
     </div>

@@ -1,5 +1,3 @@
-import React from "react";
-
 function UnderConstruction() {
   return (
     <div className="bg-primary w-screen max-w-full min-h-screen flex items-center justify-center">

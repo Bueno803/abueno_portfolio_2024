@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   motion,
   useMotionValue,
@@ -28,9 +28,9 @@ import { Md4gPlusMobiledata } from "react-icons/md";
 import emailjs from "emailjs-com"; // Import emailjs
 
 // EmailJS initialization
-const SERVICE_ID = "service_9v61gpl";
-const TEMPLATE_ID = "template_nstq0ql";
-const USER_ID = "TB8B0wKlKLnanOpkz";
+const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+const USER_ID = process.env.REACT_APP_EMAILJS_USER_ID;
 
 const SwipeCards = () => {
   const [cards, setCards] = useState(cardData);

@@ -31,9 +31,18 @@ const HorizontalScrollCarousel = () => {
 
   return (
     <section ref={targetRef} className="relative h-[300vh] bg-primary">
-      <h2 className="text-white text-3xl font-bold mb-8" data-aos="fade-right">
+      {/* <h2 className="text-white text-3xl font-bold mb-8" data-aos="fade-right">
         Projects
-      </h2>
+      </h2> */}
+      <motion.h2
+        className="text-white text-3xl font-bold mb-8"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        Project
+      </motion.h2>
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-4">
           {cards.map((card) => {
