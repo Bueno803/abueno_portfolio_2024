@@ -7,6 +7,7 @@ import Overview from "./components/Overview";
 import WorkExperience from "./components/WorkExperience";
 import Education from "./components/Education";
 import Projects from "./components/Project";
+import ResumePicker from "./components/ResumePicker";
 import Footer from "./components/Footer";
 import CssParticles from "./components/CssParticles";
 
@@ -29,6 +30,9 @@ function App() {
       </section>
       <section id="projects" className="pt-16">
         <Projects />
+      </section>
+      <section id="resumes" className="pt-16">
+        <ResumePicker />
       </section>
 
       <Footer />
