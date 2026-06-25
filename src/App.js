@@ -3,7 +3,7 @@ import "./App.css";
 
 // TODO: Restore full site after updates are complete
 import Navbar from "./components/NavBar";
-import SwipeCards from "./components/Overview";
+import Overview from "./components/Overview";
 import WorkExperience from "./components/WorkExperience";
 import Education from "./components/Education";
 import Projects from "./components/Project";
@@ -17,7 +17,7 @@ function App() {
       <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
         <Navbar />
         <section id="overview" className="pt-16">
-          <SwipeCards />
+          <Overview />
         </section>
       </div>
       <section id="work" className="pt-16">

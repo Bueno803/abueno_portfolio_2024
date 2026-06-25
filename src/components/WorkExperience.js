@@ -1,25 +1,109 @@
 import { TbBinaryTree } from "react-icons/tb";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import "react-vertical-timeline-component/style.min.css";
 
-function WorkExperience() {
-  const projects = [
-    { title: "Project 1", description: "Description for project 1" },
-    { title: "Project 2", description: "Description for project 2" },
-    { title: "Project 3", description: "Description for project 3" },
-    { title: "Project 4", description: "Description for project 4" },
-    { title: "Project 5", description: "Description for project 5" },
-  ];
+const experiences = [
+  {
+    title: "Software Engineer (Part Time)",
+    company: "Binary Holdings Group",
+    date: "Dec 2023 – April 2026",
+    description:
+      "Designed and deployed an internal email server with SSL/TLS configuration. Configured Nginx reverse proxy to route RESTful and SOAP API integrations across multiple stacks. Enforced secure data delivery through API gateway configuration with encryption and credential management. Consulted directly with clients to scope backend integration requirements.",
+    tags: [
+      { label: "#Nginx", colors: "from-green-500 via-green-600 to-green-700" },
+      { label: "#REST/SOAP APIs", colors: "from-blue-500 via-blue-600 to-blue-700" },
+      { label: "#SSL/TLS", colors: "from-red-500 via-red-600 to-red-700" },
+      { label: "#DevOps", colors: "from-purple-500 via-purple-600 to-purple-700" },
+    ],
+    icon: "binary",
+    contentStyle: {
+      background: "linear-gradient(#050816, #12314A)",
+      color: "#fff",
+    },
+    iconStyle: {
+      background: "linear-gradient(#050816, #12314A)",
+      color: "#fff",
+    },
+  },
+  {
+    title: "Software Engineer (Contracted)",
+    company: "PAFF.org — Mobile & Web Application",
+    date: "Dec 2023 – May 2024; Nov 2024 – April 2026",
+    description:
+      "Designed UI/UX for mobile and web experiences. Developed a RESTful backend managing user authentication, tier subscription access, and Stripe payment processing with webhook listeners. Built a PHP API to sanitize and transform third-party data. Optimized performance through code refactoring to reduce load times.",
+    tags: [
+      { label: "#TypeScript", colors: "from-blue-400 via-blue-500 to-blue-600" },
+      { label: "#PHP", colors: "from-indigo-400 via-indigo-500 to-indigo-600" },
+      { label: "#Stripe", colors: "from-purple-400 via-purple-500 to-purple-600" },
+      { label: "#Ionic", colors: "from-sky-400 via-sky-500 to-sky-600" },
+      { label: "#REST APIs", colors: "from-green-400 via-green-500 to-green-600" },
+    ],
+    icon: "binary",
+    contentStyle: {
+      background: "linear-gradient(#050816, #B7B8BC)",
+      color: "#fff",
+    },
+    iconStyle: {
+      background: "linear-gradient(#050816, #B7B8BC)",
+      color: "#fff",
+    },
+  },
+  {
+    title: "Software Engineer (Contracted)",
+    company: "Goodnewsy.org — Web-Based Trivia Game",
+    date: "Jun 2024 – July 2025",
+    description:
+      "Developed two prototypes (v1 in Phaser; v2 rewritten in Next.js with Tailwind CSS). Engineered a scalable backend using SQL and a custom WordPress plugin for an admin interface. Set up AWS deployment pipelines and Cloudflare CDN for global delivery. Refined UX/UI for game flow, visual feedback, and responsive interactions.",
+    tags: [
+      { label: "#Next.js", colors: "from-zinc-400 via-zinc-500 to-zinc-600" },
+      { label: "#SQL", colors: "from-orange-400 via-orange-500 to-orange-600" },
+      { label: "#AWS", colors: "from-yellow-400 via-yellow-500 to-yellow-600" },
+      { label: "#Cloudflare", colors: "from-amber-400 via-amber-500 to-amber-600" },
+      { label: "#WordPress", colors: "from-blue-300 via-blue-400 to-blue-500" },
+      { label: "#Phaser", colors: "from-pink-400 via-pink-500 to-pink-600" },
+    ],
+    icon: "binary",
+    contentStyle: {
+      background: "linear-gradient(#050816, #12314A)",
+      color: "#fff",
+    },
+    iconStyle: {
+      background: "linear-gradient(#050816, #12314A)",
+      color: "#fff",
+    },
+  },
+  {
+    title: "Software Engineer (Contracted)",
+    company: "University of Personal Fitness",
+    date: "April 2022 – Nov 2025",
+    description:
+      "Deployed a serverless Node.js backend using NestJS on Google Cloud Functions for client data management, authentication, and belt progression tracking. Built and deployed a custom Ionic web application for centralized client management. Developed a secure belt progression platform with role-based auth, automated test generation, and persistent performance metadata.",
+    tags: [
+      { label: "#NestJS", colors: "from-red-400 via-red-500 to-red-600" },
+      { label: "#Google Cloud", colors: "from-blue-400 via-blue-500 to-blue-600" },
+      { label: "#Ionic", colors: "from-sky-400 via-sky-500 to-sky-600" },
+      { label: "#TypeScript", colors: "from-blue-300 via-blue-400 to-blue-500" },
+      { label: "#Firebase", colors: "from-orange-300 via-orange-400 to-orange-500" },
+    ],
+    icon: "upf",
+    contentStyle: {
+      background: "linear-gradient(#050816, #B7B8BC)",
+      color: "#fff",
+    },
+    iconStyle: {
+      background: "linear-gradient(#050816, #B7B8BC)",
+      color: "#fff",
+    },
+  },
+];
 
+function WorkExperience() {
   return (
     <div className="container mx-auto my-20 p-4">
-      {/* <h2 className=" text-white text-3xl font-bold mb-8" data-aos="fade-right">
-        Work Experience
-      </h2> */}
       <motion.h2
         className="text-white text-3xl font-bold mb-8"
         initial={{ opacity: 0, x: -50 }}
@@ -30,208 +114,46 @@ function WorkExperience() {
         Work Experience
       </motion.h2>
       <VerticalTimeline>
-        <VerticalTimelineElement
-          className="vertical-timeline-element--work"
-          contentStyle={{
-            background: "linear-gradient(#050816, #12314A)",
-            color: "#fff",
-          }}
-          contentArrowStyle={{ borderRight: "7px solid  rgb(33, 150, 243)" }}
-          date="2022 - 2024"
-          iconStyle={{
-            background: "linear-gradient(#050816, #B7B8BC)",
-            color: "#fff",
-          }}
-          icon={
-            <img
-              src="/upfsm.jpg"
-              className="rounded-full object-cover h-16"
-            ></img>
-          }
-        >
-          <h3 className="vertical-timeline-element-title">IT Support</h3>
-          <h4 className="vertical-timeline-element-subtitle">
-            University of Personal Training
-          </h4>
-          <p>
-            Managed the smooth operation of a diverse range of devices,
-            including laptops, tablets, projectors, and audio equipment
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            <p
-              className={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 inline-block text-transparent bg-clip-text`}
-            >
-              #Hardware/Software management
-            </p>
-            <p
-              className={`text-[14px] bg-gradient-to-r from-red-600 via-red-500 to-red-600 inline-block text-transparent bg-clip-text`}
-            >
-              #Attention To Detail
-            </p>
-            <p
-              className={`text-[14px] bg-gradient-to-r from-purple-600 via-purple-500 to-purple-600 inline-block text-transparent bg-clip-text`}
-            >
-              #Communication
-            </p>
-          </div>
-        </VerticalTimelineElement>
-        <VerticalTimelineElement
-          className="vertical-timeline-element--work"
-          date="2010 - 2011"
-          contentStyle={{
-            background: "linear-gradient(#050816, #B7B8BC)",
-            color: "#fff",
-          }}
-          iconStyle={{
-            background: "linear-gradient(#050816, #12314A)",
-            color: "#fff",
-          }}
-          icon={
-            <img
-              src="/upfsm.jpg"
-              className="rounded-full object-cover h-16"
-            ></img>
-          }
-        >
-          <h3 className="vertical-timeline-element-title">
-            Freelance Desktop Application
-          </h3>
-          <h4 className="vertical-timeline-element-subtitle">
-            University of Personal Fitness
-          </h4>
-          <p>
-            Created a desktop app that organizes client information, and a
-            schedule feature that keeps track of client’s progression through a
-            system for martial arts belt testing purposes
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            <p
-              className={`text-[14px] bg-gradient-to-r from-orange-600 via-orange-700 to-orange-800 inline-block text-transparent bg-clip-text`}
-            >
-              #CSharp
-            </p>
-            <p
-              className={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 inline-block text-transparent bg-clip-text`}
-            >
-              #SQL
-            </p>
-          </div>
-        </VerticalTimelineElement>
-        <VerticalTimelineElement
-          className="vertical-timeline-element--work"
-          date="2022 - 2023"
-          contentStyle={{
-            background: "linear-gradient(#050816, #12314A)",
-            color: "#fff",
-          }}
-          iconStyle={{ background: "linear-gradient(#050816, #B7B8BC)" }}
-          icon={
-            <img
-              src="/upfsm.jpg"
-              className="rounded-full object-cover h-16"
-            ></img>
-          }
-        >
-          <h3 className="vertical-timeline-element-title">
-            Freelance Web Application
-          </h3>
-          <h4 className="vertical-timeline-element-subtitle">
-            University of Personal Fitness
-          </h4>
-          <p>
-            Created a web app with a fully integrated authentication system and
-            backend to manage client’s and client progression for martials belt
-            test purposes. Also implemented a tracking system to determine belt
-            test readiness and autamated invitations.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            <p
-              className={`text-[14px] bg-gradient-to-r from-red-300 via-red-500 to-red-600 inline-block text-transparent bg-clip-text`}
-            >
-              #Typescript
-            </p>
-            <p
-              className={`text-[14px] bg-gradient-to-r from-orange-300 via-orange-500 to-orange-600 inline-block text-transparent bg-clip-text`}
-            >
-              #Firebase
-            </p>
-            <p
-              className={`text-[14px] bg-gradient-to-r from-purple-300 via-purple-500 to-purple-600 inline-block text-transparent bg-clip-text`}
-            >
-              #Ionic
-            </p>
-            <p
-              className={`text-[14px] bg-gradient-to-r from-blue-300 via-blue-500 to-blue-600 inline-block text-transparent bg-clip-text`}
-            >
-              #Angular
-            </p>
-            <p
-              className={`text-[14px] bg-gradient-to-r from-green-300 via-green-500 to-green-600 inline-block text-transparent bg-clip-text`}
-            >
-              #NestJS
-            </p>
-            <p
-              className={`text-[14px] bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-600 inline-block text-transparent bg-clip-text`}
-            >
-              #Google Cloud
-            </p>
-          </div>
-        </VerticalTimelineElement>
-        <VerticalTimelineElement
-          className="vertical-timeline-element--work"
-          date="2023 - 2024"
-          contentStyle={{
-            background: "linear-gradient(#050816, #B7B8BC)",
-            color: "#fff",
-          }}
-          iconStyle={{
-            background: "linear-gradient(#050816, #12314A)",
-            color: "#fff",
-          }}
-          icon={<TbBinaryTree />}
-        >
-          <h3 className="vertical-timeline-element-title">
-            Freelance Developer
-          </h3>
-          <h4 className="vertical-timeline-element-subtitle">
-            Binary Holdings
-          </h4>
-          <p>
-            Developed and integrated a new feature allowing users to favorite
-            events within a mobile application
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            <p
-              className={`text-[14px] bg-gradient-to-r from-sky-600 via-sky-700 to-sky-800 inline-block text-transparent bg-clip-text`}
-            >
-              #Typescript
-            </p>
-            <p
-              className={`text-[14px] bg-gradient-to-r from-red-600 via-red-700 to-red-800 inline-block text-transparent bg-clip-text`}
-            >
-              #Ionic
-            </p>
-            <p
-              className={`text-[14px] bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 inline-block text-transparent bg-clip-text`}
-            >
-              #Capacitor
-            </p>
-          </div>
-        </VerticalTimelineElement>
-      </VerticalTimeline>
-      {/* <div className="grid md:grid-cols-2 gap-8">
-        {projects.map((project, index) => (
-          <Tilt className="Tilt" options={{ max: 25 }} key={index}>
-            <div
-              className="Tilt-inner bg-gray-200 p-6 rounded-lg shadow-lg"
-              data-aos="zoom-in"
-            >
-              <h3 className="text-xl font-bold">{project.title}</h3>
-              <p className="mt-2">{project.description}</p>
+        {experiences.map((exp, index) => (
+          <VerticalTimelineElement
+            key={index}
+            className="vertical-timeline-element--work"
+            contentStyle={exp.contentStyle}
+            contentArrowStyle={{ borderRight: "7px solid rgb(33, 150, 243)" }}
+            date={exp.date}
+            iconStyle={exp.iconStyle}
+            icon={
+              exp.icon === "upf" ? (
+                <img
+                  src="/upfsm.jpg"
+                  alt={exp.company}
+                  className="rounded-full object-cover h-16"
+                />
+              ) : (
+                <TbBinaryTree />
+              )
+            }
+          >
+            <h3 className="vertical-timeline-element-title font-bold">
+              {exp.title}
+            </h3>
+            <h4 className="vertical-timeline-element-subtitle text-sm mt-1 opacity-80">
+              {exp.company}
+            </h4>
+            <p className="text-sm mt-3 leading-relaxed">{exp.description}</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {exp.tags.map((tag, tagIndex) => (
+                <p
+                  key={tagIndex}
+                  className={`text-[14px] bg-gradient-to-r ${tag.colors} inline-block text-transparent bg-clip-text`}
+                >
+                  {tag.label}
+                </p>
+              ))}
             </div>
-          </Tilt>
+          </VerticalTimelineElement>
         ))}
-      </div> */}
+      </VerticalTimeline>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   motion,
   useMotionValue,
@@ -6,7 +6,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { twMerge } from "tailwind-merge";
-import { FiMail, FiMapPin } from "react-icons/fi";
+import { FiMail, FiMapPin, FiChevronDown } from "react-icons/fi";
 import {
   SiGithub,
   SiGmail,
@@ -25,21 +25,28 @@ import {
   FaLinode,
 } from "react-icons/fa";
 import { Md4gPlusMobiledata } from "react-icons/md";
-import emailjs from "emailjs-com"; // Import emailjs
+import emailjs from "emailjs-com";
 
 // EmailJS initialization
 const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
 const USER_ID = process.env.REACT_APP_EMAILJS_USER_ID;
 
-const SwipeCards = () => {
+// Typing animation roles
+const ROLES = [
+  "Fullstack Engineer",
+  "Backend Developer",
+  "Data Scientist",
+  "Mobile Developer",
+];
+
+const Overview = () => {
   const [cards, setCards] = useState(cardData);
 
   return (
-    <div className="container mx-auto my-20 p-4 flex justify-between items-center">
-      <div>
+    <div className="container mx-auto my-20 p-4 flex flex-col lg:flex-row justify-between items-center gap-8">
+      <div className="flex-1">
         <div className="min-h-screen bg-transparent px-4 py-12 text-zinc-50">
-          <Logo />
           <motion.div
             initial="initial"
             animate="animate"
@@ -57,8 +64,8 @@ const SwipeCards = () => {
         </div>
       </div>
 
-      <div className="relative h-[500px] w-[400px] flex items-center">
-        {cards.map((card, index) => (
+      <div className="relative h-[500px] w-[400px] flex items-center shrink-0 hidden lg:flex">
+        {cards.map((card) => (
           <Card key={card.id} cards={cards} setCards={setCards} {...card} />
         ))}
       </div>
@@ -66,6 +73,7 @@ const SwipeCards = () => {
   );
 };
 
+// --- Swipeable Cards ---
 const Card = ({ id, url, setCards, cards }) => {
   const x = useMotionValue(0);
 
@@ -76,7 +84,6 @@ const Card = ({ id, url, setCards, cards }) => {
 
   const rotate = useTransform(() => {
     const offset = isFront ? 0 : id % 2 ? 6 : -6;
-
     return `${rotateRaw.get() + offset}deg`;
   });
 
@@ -85,7 +92,7 @@ const Card = ({ id, url, setCards, cards }) => {
       setCards((pv) => {
         const swipedCard = pv.find((card) => card.id === id);
         const remainingCards = pv.filter((card) => card.id !== id);
-        return [swipedCard, ...remainingCards]; // Move the swiped card to the back
+        return [swipedCard, ...remainingCards];
       });
     }
   };
@@ -115,6 +122,136 @@ const Card = ({ id, url, setCards, cards }) => {
     />
   );
 };
+
+const cardData = [
+  { id: 1, url: "/imgs/abueno_kick.jpg" },
+  { id: 2, url: "/imgs/Abueno.jpg" },
+  { id: 3, url: "/imgs/abueno_grad.jpg" },
+];
+
+// --- Typing Animation ---
+const TypingAnimation = () => {
+  const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    const currentRole = ROLES[currentRoleIndex];
+
+    const handleTyping = () => {
+      if (!isDeleting) {
+        // Typing forward
+        if (displayText.length < currentRole.length) {
+          timeoutRef.current = setTimeout(() => {
+            setDisplayText(currentRole.slice(0, displayText.length + 1));
+          }, 80);
+        } else {
+          // Pause at full text, then start deleting
+          timeoutRef.current = setTimeout(() => {
+            setIsDeleting(true);
+          }, 2000);
+        }
+      } else {
+        // Deleting
+        if (displayText.length > 0) {
+          timeoutRef.current = setTimeout(() => {
+            setDisplayText(displayText.slice(0, -1));
+          }, 40);
+        } else {
+          // Move to next role
+          setIsDeleting(false);
+          setCurrentRoleIndex((prev) => (prev + 1) % ROLES.length);
+        }
+      }
+    };
+
+    handleTyping();
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [displayText, isDeleting, currentRoleIndex]);
+
+  return (
+    <span className="text-zinc-400">
+      I'm a {displayText}
+      <span className="inline-block w-[2px] h-[1em] bg-zinc-400 ml-1 animate-pulse" />
+    </span>
+  );
+};
+
+// --- Resume Dropdown ---
+const ResumeDropdown = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const resumes = [
+    {
+      label: "General Resume",
+      file: "/resumes/9-28-25_New_ABUENO_RESUME.docx",
+      download: "Abdullah_Bueno_Resume.docx",
+    },
+    {
+      label: "Backend Resume",
+      file: "/resumes/ABUENO_RESUME_backend_copy.docx",
+      download: "Abdullah_Bueno_Backend_Resume.docx",
+    },
+    {
+      label: "Data Science Resume",
+      file: "/resumes/9-28-25_ABUENO_RESUME_DATASCIENCE.docx",
+      download: "Abdullah_Bueno_DataScience_Resume.docx",
+    },
+  ];
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative" ref={dropdownRef}>
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center gap-2 whitespace-nowrap rounded bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-300"
+      >
+        <FaFileDownload /> Download Resume <FiChevronDown className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -5 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -5 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-full left-0 mt-2 w-56 rounded-lg border border-zinc-700 bg-zinc-800 shadow-xl z-20 overflow-hidden"
+          >
+            {resumes.map((resume, idx) => (
+              <a
+                key={idx}
+                href={resume.file}
+                download={resume.download}
+                className="block px-4 py-3 text-sm text-zinc-200 hover:bg-zinc-700 transition-colors border-b border-zinc-700 last:border-b-0"
+                onClick={() => setIsOpen(false)}
+              >
+                {resume.label}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// --- Bento Grid Block ---
 const Block = ({ className, ...rest }) => {
   return (
     <motion.div
@@ -145,31 +282,23 @@ const Block = ({ className, ...rest }) => {
   );
 };
 
+// --- Header Block with Typing Animation ---
 const HeaderBlock = () => (
   <Block className="col-span-12 row-span-2 md:col-span-6">
     <img
-      src="https://api.dicebear.com/8.x/lorelei-neutral/svg?seed=John"
-      alt="avatar"
-      className="mb-4 size-14 rounded-full"
+      src="/headshot.png"
+      alt="Abdullah Bueno"
+      className="mb-4 size-14 rounded-full object-cover"
     />
     <h1 className="mb-12 text-4xl font-medium leading-tight">
       Hi, I'm Abdullah.{" "}
-      <span className="text-zinc-400">I am a fullstack software engineer!</span>
+      <TypingAnimation />
     </h1>
-    <a
-      href="AbdullahBueno_resume_onepage.pdf"
-      download="AbdullahBueno_Resume.pdf"
-    >
-      <button
-        type="submit"
-        className="flex items-center gap-2 whitespace-nowrap rounded bg-zinc-50 px-3 py-2 text-sm font-medium text-zinc-900 transition-colors hover:bg-zinc-300"
-      >
-        <FaFileDownload /> Download Resume
-      </button>
-    </a>
+    <ResumeDropdown />
   </Block>
 );
 
+// --- Socials Block ---
 const SocialsBlock = () => {
   const [gmailOpen, isGmailOpen] = useState(false);
   const [linkOpen, isLinkOpen] = useState(false);
@@ -184,7 +313,7 @@ const SocialsBlock = () => {
           rotate: "2.5deg",
           scale: 1.1,
         }}
-        className="col-span-6 bg-violet-400 md:col-span-3"
+        className="col-span-6 bg-violet-400 md:col-span-3 cursor-pointer"
       >
         <a
           href="#"
@@ -199,7 +328,7 @@ const SocialsBlock = () => {
           rotate: "-2.5deg",
           scale: 1.1,
         }}
-        className="col-span-6 bg-green-600 md:col-span-3"
+        className="col-span-6 bg-green-600 md:col-span-3 cursor-pointer"
       >
         <a
           href="#"
@@ -214,7 +343,7 @@ const SocialsBlock = () => {
           rotate: "-2.5deg",
           scale: 1.1,
         }}
-        className="col-span-6 bg-red-500 md:col-span-3"
+        className="col-span-6 bg-red-500 md:col-span-3 cursor-pointer"
       >
         <a
           href="#"
@@ -229,7 +358,7 @@ const SocialsBlock = () => {
           rotate: "2.5deg",
           scale: 1.1,
         }}
-        className="col-span-6 bg-blue-500 md:col-span-3"
+        className="col-span-6 bg-blue-500 md:col-span-3 cursor-pointer"
       >
         <a
           href="#"
@@ -246,6 +375,7 @@ const SocialsBlock = () => {
   );
 };
 
+// --- About Block ---
 const AboutBlock = () => (
   <Block className="col-span-12 text-2xl leading-snug">
     <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-2">
@@ -303,6 +433,7 @@ const AboutBlock = () => (
   </Block>
 );
 
+// --- Location Block ---
 const LocationBlock = () => (
   <Block className="h-40 col-span-12 flex flex-col items-center gap-4 md:col-span-3">
     <FiMapPin className="text-3xl" />
@@ -312,6 +443,7 @@ const LocationBlock = () => (
   </Block>
 );
 
+// --- Email Block ---
 const EmailListBlock = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -334,7 +466,7 @@ const EmailListBlock = () => {
       (response) => {
         console.log("Email sent successfully!", response.status, response.text);
         alert("Your message has been sent!");
-        setFormData({ name: "", email: "", message: "" }); // Reset form fields
+        setFormData({ name: "", email: "", message: "" });
       },
       (error) => {
         console.error("Failed to send email:", error);
@@ -342,6 +474,7 @@ const EmailListBlock = () => {
       }
     );
   };
+
   return (
     <Block className="col-span-12 md:col-span-9">
       <p className="mb-3 text-lg">Send me a message!</p>
@@ -409,46 +542,14 @@ const EmailListBlock = () => {
   );
 };
 
-const Logo = () => {
-  return (
-    <svg
-      width="40"
-      height="auto"
-      viewBox="0 0 50 39"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="mx-auto mb-12 fill-zinc-50"
-    >
-      <path
-        d="M16.4992 2H37.5808L22.0816 24.9729H1L16.4992 2Z"
-        stopColor="#000000"
-      ></path>
-      <path
-        d="M17.4224 27.102L11.4192 36H33.5008L49 13.0271H32.7024L23.2064 27.102H17.4224Z"
-        stopColor="#000000"
-      ></path>
-    </svg>
-  );
-};
-
-const Footer = () => {
-  return (
-    <footer className="mt-12">
-      <p className="text-center text-zinc-400">
-        Made with ❤️ by{" "}
-        <a href="#" className="text-red-300 hover:underline">
-          @tomisloading
-        </a>
-      </p>
-    </footer>
-  );
-};
+// --- Modals ---
 const GmailModal = ({ isOpen, setIsOpen }) => {
   const [notifications, setNotifications] = useState([]);
 
   const removeNotif = (id) => {
     setNotifications((pv) => pv.filter((n) => n.id !== id));
   };
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -555,6 +656,7 @@ const LinkModal = ({ isOpen, setIsOpen }) => {
     </AnimatePresence>
   );
 };
+
 const GitModal = ({ isOpen, setIsOpen }) => {
   return (
     <AnimatePresence>
@@ -652,23 +754,10 @@ const FaceModal = ({ isOpen, setIsOpen }) => {
     </AnimatePresence>
   );
 };
-export default SwipeCards;
 
-const cardData = [
-  {
-    id: 1,
-    url: "/imgs/abueno_kick.jpg",
-  },
-  {
-    id: 2,
-    url: "/imgs/Abueno.jpg",
-  },
-  {
-    id: 3,
-    url: "/imgs/abueno_grad.jpg",
-  },
-];
+export default Overview;
 
+// --- Utilities ---
 const NOTIFICATION_TTL = 5000;
 
 const Notification = ({ id, removeNotif }) => {
@@ -678,7 +767,7 @@ const Notification = ({ id, removeNotif }) => {
     }, NOTIFICATION_TTL);
 
     return () => clearTimeout(timeoutRef);
-  }, []);
+  }, [id, removeNotif]);
 
   return (
     <motion.div
@@ -700,7 +789,7 @@ const Notification = ({ id, removeNotif }) => {
 
 function copyToClipboard(copiedText) {
   navigator.clipboard.writeText(copiedText);
-  return "buenobusiness803@gmail.com";
+  return { id: Math.random().toString(36).slice(2) };
 }
 
 function openNewPage(url) {
