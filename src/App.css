@@ -46,3 +46,28 @@
     transform: translateY(-6px);
   }
 }
+
+/* CSS particle float animation */
+.particle-float {
+  animation-name: particleRise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes particleRise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: var(--particle-opacity, 0.4);
+  }
+  90% {
+    opacity: var(--particle-opacity, 0.4);
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
