@@ -1,4 +1,3 @@
-import { TbBinaryTree } from "react-icons/tb";
 import { motion } from "framer-motion";
 import {
   VerticalTimeline,
@@ -127,15 +126,14 @@ function WorkExperience() {
                 <img
                   src="/imgs/upf-cropped-pfp.png"
                   alt={exp.company}
-                  className="rounded-full object-cover h-[70px]"
+                  className="w-full h-full rounded-full object-cover"
                 />
               ) : (
                 <img
                   src="/imgs/bhg-cropped-pfp.png"
                   alt={exp.company}
-                  className="rounded-full object-cover h-16"
+                  className="w-full h-full rounded-full object-cover"
                 />
-                // <TbBinaryTree />
               )
             }
           >

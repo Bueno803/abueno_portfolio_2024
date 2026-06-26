@@ -182,18 +182,18 @@ const ResumeDropdown = () => {
   const resumes = [
     {
       label: "General Resume",
-      file: "/resumes/9-28-25_New_ABUENO_RESUME.docx",
-      download: "Abdullah_Bueno_Resume.docx",
+      file: "/resumes/9-28-25_New_ABUENO_RESUME.pdf",
+      download: "Abdullah_Bueno_Resume.pdf",
     },
     {
       label: "Backend Resume",
-      file: "/resumes/ABUENO_RESUME_backend_copy.docx",
-      download: "Abdullah_Bueno_Backend_Resume.docx",
+      file: "/resumes/ABUENO_RESUME_backend.pdf",
+      download: "Abdullah_Bueno_Backend_Resume.pdf",
     },
     {
       label: "Data Science Resume",
-      file: "/resumes/9-28-25_ABUENO_RESUME_DATASCIENCE.docx",
-      download: "Abdullah_Bueno_DataScience_Resume.docx",
+      file: "/resumes/9-28-25_ABUENO_RESUME_DATASCIENCE.pdf",
+      download: "Abdullah_Bueno_DataScience_Resume.pdf",
     },
   ];
 
