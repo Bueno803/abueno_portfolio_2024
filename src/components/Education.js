@@ -6,53 +6,59 @@ import { FiX, FiExternalLink } from "react-icons/fi";
 const projects = [
   {
     id: 1,
-    url: "/imgs/UPFapp.png",
+    url: "/imgs/upf-cropped-pfp.png",
     title: "UPF Client Management System",
+    additionalCSS: "object-[center_40%]",
     summary: "Full-stack web app for martial arts client management",
     content:
       "Built and deployed a custom Ionic web application with a serverless NestJS backend on Google Cloud Functions. Features include role-based authentication, belt progression tracking, automated test generation, class attendance management, and persistent performance metadata storage.",
     tags: ["TypeScript", "NestJS", "Ionic", "Google Cloud", "Firebase"],
-    repoLink: "https://github.com/Bueno803/UPF_App",
+    cta: [{ctaText: "Visit Website", ctaLink: "https://upf-mobile.com"}]
   },
   {
     id: 2,
     url: "/imgs/goodnewsy.png",
     title: "Web-Based Trivia Game",
+    additionalCSS: "",
     summary: "Interactive trivia platform with admin CMS and daily content",
     content:
       "Developed two prototypes (v1 in Phaser; v2 rewritten in Next.js with Tailwind CSS). Engineered a scalable backend using SQL and a custom WordPress plugin serving as a headless CMS API. Set up AWS deployment pipelines and Cloudflare CDN for fast global delivery. Implemented user authentication, progression tracking, and raffle entry system.",
     tags: ["Next.js", "SQL", "AWS", "Cloudflare", "WordPress", "Phaser"],
-    repoLink: null,
+    cta: []
   },
   {
     id: 3,
     url: "/imgs/OFFICIAL_PAFF_LOGO_WHT.png",
     title: "PAFF Mobile Application",
+    additionalCSS: "",
     summary: "Mobile app for the Pan African Film & Arts Festival",
     content:
       "Designed UI/UX for mobile and web experiences. Developed a RESTful backend managing user authentication, tier subscription access, and Stripe payment processing with webhook listeners. Built a PHP API to sanitize and transform third-party data. Implemented SEO, accessibility best practices, and a favorites/bookmarking feature.",
     tags: ["TypeScript", "Ionic", "PHP", "Stripe", "Capacitor"],
-    repoLink: null,
+    cta: [{ctaText: "Android Download", ctaLink: "https://play.google.com/store/apps/details?id=com.paff.paffapp2&hl=en_US"}, {ctaText: "Apple Download", ctaLink: "https://apps.apple.com/us/app/paffapp/id1664773733"}]
   },
   {
     id: 4,
     url: "/imgs/makelist.png",
     title: "Makelist",
+    additionalCSS: "",
     summary: "Collaborative grocery list app with dietary preferences",
     content:
       "Collaborated with a team of 5 to design and create a web app that allows users to create accounts and customize their grocery list based on dietary preferences. Handled computer system implementation, testing, verification, and validation of results.",
     tags: ["React", "Node.js", "MongoDB", "Express"],
-    repoLink: "https://github.com/Bueno803/USCWebApp",
+    cta: []
   },
   {
     id: 5,
     url: "/imgs/platformer.png",
     title: "Lua Platformer",
+    additionalCSS: "",
     summary: "2D platformer with physics engine and collision detection",
     content:
       "A Lua Platformer where I implemented challenging obstacles and enemies with a goal at the end, utilizing collision detection and a physics engine to offer responsive realistic interactions.",
     tags: ["Lua", "LÖVE2D", "Physics Engine"],
-    repoLink: "https://github.com/Bueno803/lua-projects/tree/main/platformer",
+    cta: [{ctaText: "Visit Repo", ctaLink: "https://github.com/Bueno803/lua-projects/tree/main/platformer"}]
+    
   },
   // {
   //   id: 6,
@@ -105,7 +111,7 @@ const Projects = () => {
                     <img
                       src={project.url}
                       alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                      className={`w-full h-full object-cover transition-transform duration-300 hover:scale-110 ${project.additionalCSS}`}
                     />
                   </div>
 
@@ -194,8 +200,19 @@ const Projects = () => {
                     ))}
                   </div>
 
+                  {/* CTA Link(s)*/}
+                  {selectedProject.cta.map((cta, i) => (
+                    <a 
+                    href={cta.ctaLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-zinc-700 text-white font-medium hover:bg-zinc-600 transition-colors m-4"
+                    >
+                      <FiExternalLink /> {cta.ctaText}
+                    </a>
+                  ))}
                   {/* Repo Link */}
-                  {selectedProject.repoLink && (
+                  {/* {selectedProject.repoLink && (
                     <a
                       href={selectedProject.repoLink}
                       target="_blank"
@@ -204,7 +221,7 @@ const Projects = () => {
                     >
                       <FiExternalLink /> View Project
                     </a>
-                  )}
+                  )} */}
                 </div>
               </motion.div>
             </motion.div>

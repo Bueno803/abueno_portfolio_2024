@@ -275,14 +275,28 @@ const Block = ({ className, ...rest }) => {
   );
 };
 
+// --- Terminal Greeting ---
+const TerminalGreeting = () => (
+  <div className="mb-6 font-mono text-sm bg-zinc-900/80 border border-zinc-700 rounded-lg p-3 w-full">
+    <div className="flex items-center gap-2 mb-2">
+      <span className="w-3 h-3 rounded-full bg-red-500" />
+      <span className="w-3 h-3 rounded-full bg-yellow-500" />
+      <span className="w-3 h-3 rounded-full bg-green-500" />
+    </div>
+    <div className="text-zinc-400">
+      <span className="text-green-400">$</span> whoami
+    </div>
+    <div className="text-zinc-200 mt-1">
+      <span className="text-purple-400">&gt;</span> abdullah_bueno
+      <span className="inline-block w-[6px] h-[14px] bg-zinc-400 ml-1 animate-pulse align-middle" />
+    </div>
+  </div>
+);
+
 // --- Header Block with Typing Animation ---
 const HeaderBlock = () => (
   <Block className="col-span-12 row-span-2 md:col-span-6">
-    <img
-      src="/headshot.png"
-      alt="Abdullah Bueno"
-      className="mb-4 size-14 rounded-full object-cover"
-    />
+    <TerminalGreeting />
     <h1 className="mb-12 text-4xl font-medium leading-tight">
       Hi, I'm Abdullah.{" "}
       <TypingAnimation />

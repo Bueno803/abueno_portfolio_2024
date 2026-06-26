@@ -26,7 +26,7 @@ function Navbar() {
       <nav className="bg-slate-50 backdrop-filter bg-opacity-5 backdrop-blur-lg p-4 fixed top-[3px] left-0 w-full z-10 flex justify-between items-center">
         {/* Placeholder image in a circle */}
         {/* <div className="w-12 h-12 bg-gray-300 rounded-full"></div> */}
-        <img className="w-12 h-12 bg-gray-300 rounded-full" src="/headshot.png" alt="Abdullah Bueno" />
+        <img className="w-12 h-12 bg-gray-300 rounded-full" src="/me-pfp.jpg" alt="Abdullah Bueno" />
 
         {/* Desktop and tablet menu */}
         <ul className="hidden md:flex space-x-8 text-white">
